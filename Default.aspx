@@ -13,7 +13,8 @@
         <input type="text" placeholder="eg. https://slack.com" id="urlpath" runat="server"/>
         <asp:Button Text="Go!" OnClick="Execute_Analyze_Command_Click" runat="server"/>
     </div>
-         <asp:Label id="allValidationMsg" runat="server" height="22px" ForeColor="Red"></asp:Label>
+        <p></p>
+         <asp:label id="allValidationMsg" runat="server" height="22px" />
     </form>
 </body>
 </html>

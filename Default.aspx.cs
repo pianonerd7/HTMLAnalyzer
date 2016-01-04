@@ -16,6 +16,6 @@ public partial class _Default : System.Web.UI.Page
     {
         string url = urlpath.Value;
         string http = HTMLAnalyzer.URLToHTML(url);
-        allValidationMsg.Text = http;
+        allValidationMsg.Text = Server.HtmlEncode(http);
     }
 }
