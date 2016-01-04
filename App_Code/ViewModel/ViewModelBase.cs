@@ -10,17 +10,6 @@ using System.Web;
 public class ViewModelBase : INotifyPropertyChanged
     {
 
-        #region Private Properties
-
-
-
-        #endregion
-
-        #region Public Properties
-
-    
-        #endregion
-
         #region INotifyProperty
 
         public event PropertyChangedEventHandler PropertyChanged;
