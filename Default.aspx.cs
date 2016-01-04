@@ -9,6 +9,11 @@ public partial class _Default : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        
+    }
 
+    protected void Execute_Analyze_Command_Click(object sender, EventArgs e)
+    {
+        string url = urlpath.Value;
     }
 }

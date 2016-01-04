@@ -10,8 +10,9 @@
     <form id="form1" runat="server">
     <div>
         <p>Please enter the URL</p>
-        URL <input type="text" />
-        <asp:Button Text="Go!" runat="server" />
+        <input type="text" placeholder="eg. www.slack.com" id="urlpath" runat="server"/>
+
+        <asp:Button Text="Go!" OnClick="Execute_Analyze_Command_Click" runat="server"/>
     </div>
     </form>
 </body>
