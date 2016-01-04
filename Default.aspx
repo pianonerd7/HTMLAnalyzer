@@ -10,10 +10,10 @@
     <form id="form1" runat="server">
     <div>
         <p>Please enter the URL</p>
-        <input type="text" placeholder="eg. www.slack.com" id="urlpath" runat="server"/>
-
+        <input type="text" placeholder="eg. https://slack.com" id="urlpath" runat="server"/>
         <asp:Button Text="Go!" OnClick="Execute_Analyze_Command_Click" runat="server"/>
     </div>
+         <asp:Label id="allValidationMsg" runat="server" height="22px" ForeColor="Red"></asp:Label>
     </form>
 </body>
 </html>

@@ -14,7 +14,7 @@ public class HTMLAnalyzer
 
     public static string URLToHTML(string url)
     {
-        String http = null;
+        string http = null;
 
         HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
         HttpWebResponse response = (HttpWebResponse)request.GetResponse();
@@ -39,4 +39,6 @@ public class HTMLAnalyzer
         }
         return http;
     }
+
+    //public static 
 }
