@@ -24,12 +24,12 @@ public class HTMLAnalyzer
     }
 
 
-    private string getHtml()
+    public string getHtml()
     {
         return html.DocumentNode.OuterHtml;
     }
 
-    private string NodesToString()
+    public string NodesToString()
     {
         var root = html.DocumentNode;
         IEnumerable<HtmlNode> nodes = root.Descendants();
@@ -45,7 +45,7 @@ public class HTMLAnalyzer
         return sb.ToString();
     }
 
-    private Dictionary<string, int> CountTags(string url)
+    public Dictionary<string, int> CountTags(string url)
     {
         Dictionary<string, int> numTags = new Dictionary<string, int>();
 
@@ -69,7 +69,7 @@ public class HTMLAnalyzer
         return numTags;
     }
 
-    private string DictionaryToString(Dictionary<string, int> dictionary)
+    public string DictionaryToString(Dictionary<string, int> dictionary)
     {
         StringBuilder sb = new StringBuilder();
 
@@ -85,4 +85,5 @@ public class HTMLAnalyzer
 
         return sb.ToString();
     }
+  
 }
