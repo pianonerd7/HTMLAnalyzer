@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Web;
 
 /// <summary>
@@ -40,5 +41,16 @@ public class HTMLAnalyzer
         return http;
     }
 
-    //public static 
+    public static Dictionary<String, int> GetTags(string http)
+    {
+        Dictionary<String, int> httpTagMap = new Dictionary<String, int>();
+
+        string[] words = Regex.Split(http, @"\W");
+        for (int index = 0; index < words.Length; index++)
+        {
+
+        }
+
+        return httpTagMap;
+    }
 }
