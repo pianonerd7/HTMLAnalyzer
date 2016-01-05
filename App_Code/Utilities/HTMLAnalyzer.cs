@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HtmlAgilityPack;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -12,45 +13,76 @@ using System.Web;
 /// </summary>
 public class HTMLAnalyzer
 {
+    private string _url;
+    HtmlDocument html;
 
-    public static string URLToHTML(string url)
+    public HTMLAnalyzer(string url)
     {
-        string http = null;
+        this._url = url;
+        HtmlDocument html = new HtmlDocument();
+        html.LoadHtml(new WebClient().DownloadString(_url));
+    }
 
-        HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
-        HttpWebResponse response = (HttpWebResponse)request.GetResponse();
 
-        if (response.StatusCode == HttpStatusCode.OK)
+    private string getHtml()
+    {
+        return html.DocumentNode.OuterHtml;
+    }
+
+    private string NodesToString()
+    {
+        var root = html.DocumentNode;
+        IEnumerable<HtmlNode> nodes = root.Descendants();
+
+        StringBuilder sb = new StringBuilder();
+
+        foreach (HtmlNode n in nodes)
         {
-            Stream receiveStream = response.GetResponseStream();
-            StreamReader readStream = null;
+            sb.Append(n.Name);
+            sb.Append(",");
+            sb.Append("\t");
+        }
+        return sb.ToString();
+    }
 
-            if (response.CharacterSet == null)
+    private Dictionary<string, int> CountTags(string url)
+    {
+        Dictionary<string, int> numTags = new Dictionary<string, int>();
+
+        var html = new HtmlDocument();
+        html.LoadHtml(new WebClient().DownloadString(url));
+        var root = html.DocumentNode;
+        IEnumerable<HtmlNode> nodes = root.Descendants();
+
+        foreach (HtmlNode node in nodes)
+        {
+            if (numTags.ContainsKey(node.Name))
             {
-                readStream = new StreamReader(receiveStream);
+                numTags[node.Name]++;
             }
             else
             {
-                readStream = new StreamReader(receiveStream, Encoding.GetEncoding(response.CharacterSet));
+                numTags.Add(node.Name, 1);
             }
-            http = readStream.ReadToEnd();
-
-            response.Close();
-            readStream.Close();
         }
-        return http;
+
+        return numTags;
     }
 
-    public static Dictionary<String, int> GetTags(string http)
+    private string DictionaryToString(Dictionary<string, int> dictionary)
     {
-        Dictionary<String, int> httpTagMap = new Dictionary<String, int>();
+        StringBuilder sb = new StringBuilder();
 
-        string[] words = Regex.Split(http, @"\W");
-        for (int index = 0; index < words.Length; index++)
+        foreach (string str in dictionary.Keys)
         {
-
+            sb.Append("[");
+            sb.Append("key: ");
+            sb.Append(str);
+            sb.Append(", value: ");
+            sb.Append(dictionary[str]);
+            sb.Append("] \n");
         }
 
-        return httpTagMap;
+        return sb.ToString();
     }
 }
