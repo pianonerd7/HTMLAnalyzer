@@ -19,7 +19,7 @@ public class HTMLAnalyzer
     public HTMLAnalyzer(string url)
     {
         this._url = url;
-        HtmlDocument html = new HtmlDocument();
+        this.html = new HtmlDocument();
         html.LoadHtml(new WebClient().DownloadString(_url));
     }
 
@@ -62,7 +62,10 @@ public class HTMLAnalyzer
             }
             else
             {
-                numTags.Add(node.Name, 1);
+                if (!node.Name.Equals("#text") && !node.Name.Equals("#comment"))
+                {
+                    numTags.Add(node.Name, 1);
+                }
             }
         }
 
