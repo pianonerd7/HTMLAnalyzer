@@ -17,10 +17,21 @@ public class HTMLAnalyzer
     public HTMLAnalyzer(string url)
     {
         this._url = url;
-        this.html = new HtmlDocument();
-        html.LoadHtml(new WebClient().DownloadString(_url));
+        initializeURL(url);
     }
 
+    private void initializeURL(string url)
+    {
+        this.html = new HtmlDocument();
+        try
+        {
+            html.LoadHtml(new WebClient().DownloadString(_url));
+        }
+        catch(Exception e)
+        {
+            Console.Out.WriteLine(e.Message);
+        }
+    }
 
     public string getHtml()
     {
