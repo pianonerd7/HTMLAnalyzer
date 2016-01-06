@@ -27,22 +27,6 @@ public class HTMLAnalyzer
         return html.DocumentNode.OuterHtml;
     }
 
-    public string NodesToString()
-    {
-        var root = html.DocumentNode;
-        IEnumerable<HtmlNode> nodes = root.Descendants();
-
-        StringBuilder sb = new StringBuilder();
-
-        foreach (HtmlNode n in nodes)
-        {
-            sb.Append(n.Name);
-            sb.Append(",");
-            sb.Append("\t");
-        }
-        return sb.ToString();
-    }
-
     public Dictionary<string, int> CountTags()
     {
         Dictionary<string, int> numTags = new Dictionary<string, int>();
@@ -64,24 +48,6 @@ public class HTMLAnalyzer
                 }
             }
         }
-
         return numTags;
-    }
-
-    public string DictionaryToString(Dictionary<string, int> dictionary)
-    {
-        StringBuilder sb = new StringBuilder();
-
-        foreach (string str in dictionary.Keys)
-        {
-            sb.Append("[");
-            sb.Append("key: ");
-            sb.Append(str);
-            sb.Append(", value: ");
-            sb.Append(dictionary[str]);
-            sb.Append("] \n");
-        }
-
-        return sb.ToString();
     }
 }
