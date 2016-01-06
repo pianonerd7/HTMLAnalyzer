@@ -1,6 +1,7 @@
 ﻿using HtmlAgilityPack;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -33,5 +34,10 @@ public partial class _Default : System.Web.UI.Page
         tagsummary.DataBind();
 
         htmlsourcecode.Text = Server.HtmlEncode(analyzer.getHtml());
+    }
+
+    protected void OnSelectedIndexChanged(object sender, EventArgs e)
+    {
+        htmlsourcecode.Text = "testing";
     }
 }

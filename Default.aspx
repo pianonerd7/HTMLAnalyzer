@@ -19,13 +19,9 @@
             <p></p>
             <asp:GridView ID="tagsummary" runat="server">
                 <Columns>
-                    <asp:BoundField DataField="Key" HeaderText="Tag" />
-                    <asp:BoundField DataField="Value" HeaderText="Number of Occurances" />
-
                     <asp:TemplateField ShowHeader="False">
                         <ItemTemplate>
-                            <asp:Button ID="Button1" runat="server"
-                                Text="SendMail" />
+                            <asp:Button runat="server" Text="Highlight All Tags" OnClick="OnSelectedIndexChanged"/>
                         </ItemTemplate>
                     </asp:TemplateField>
                 </Columns>
