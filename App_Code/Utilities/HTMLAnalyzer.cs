@@ -16,11 +16,22 @@ public class HTMLAnalyzer
 
     public HTMLAnalyzer(string url)
     {
-        this._url = url;
-        initializeURL(url);
+        this._url = ConvertToAbsolute(url);
+        initializeURL();
     }
 
-    private void initializeURL(string url)
+    private string ConvertToAbsolute(string url)
+    {
+        var newUrl = new Uri(url, UriKind.RelativeOrAbsolute);
+
+        if (!newUrl.IsAbsoluteUri)
+        {
+            return "https://" + url;
+        }
+        return url;
+    }
+
+    private void initializeURL()
     {
         this.html = new HtmlDocument();
         try
