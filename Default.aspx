@@ -17,7 +17,19 @@
             <p></p>
             <asp:Label ID="summarylabel" runat="server" />
             <p></p>
-            <asp:GridView ID="tagsummary" runat="server" />
+            <asp:GridView ID="tagsummary" runat="server">
+                <Columns>
+                    <asp:BoundField DataField="Key" HeaderText="Tag" />
+                    <asp:BoundField DataField="Value" HeaderText="Number of Occurances" />
+
+                    <asp:TemplateField ShowHeader="False">
+                        <ItemTemplate>
+                            <asp:Button ID="Button1" runat="server"
+                                Text="SendMail" />
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                </Columns>
+            </asp:GridView>
             <p></p>
             <asp:Label ID="htmlcodelabel" runat="server" />
             <p></p>
