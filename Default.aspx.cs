@@ -12,7 +12,8 @@ using System.Web.UI.WebControls;
 
 public partial class _Default : System.Web.UI.Page
 {
-
+    public string _tag;
+    public string _html;
     protected void Page_Load(object sender, EventArgs e)
     {
     }
@@ -31,7 +32,8 @@ public partial class _Default : System.Web.UI.Page
             tagsummary.DataSource = analyzer.CountTags();
             tagsummary.DataBind();
 
-            htmlsourcecode.Text = Server.HtmlEncode(analyzer.getHtml());
+            _html = Server.HtmlEncode(analyzer.getHtml());
+            htmlsourcecode.Text = _html;
         }
         //TODO add try catch for invalid url
     }
@@ -40,30 +42,6 @@ public partial class _Default : System.Web.UI.Page
     {
         GridViewRow row = (GridViewRow)((Button)sender).NamingContainer;
         string tag = row.Cells[1].Text;
-        //htmlsourcecode.Text = tag;
-
-        htmlsourcecode.Text = HighlightKeywords("html", tag);
-    }
-
-    public string HighlightKeywords(string input, string keywords)
-    {
-        if (input == string.Empty || keywords == string.Empty)
-        {
-            return input;
-        }
-
-        string[] sKeywords = keywords.Split(' ');
-        foreach (string sKeyword in sKeywords)
-        {
-            try
-            {
-                input = Regex.Replace(input, sKeyword, string.Format("<span class=\"hit\">{0}</span>", "$0"), RegexOptions.IgnoreCase);
-            }
-            catch
-            {
-                //
-            }
-        }
-        return input;
+        searchText.Text = tag; 
     }
 }
