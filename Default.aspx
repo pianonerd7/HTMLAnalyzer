@@ -16,11 +16,11 @@
         <div>
             <p></p>
             <asp:Label ID="summarylabel" runat="server" />
-            <asp:Label ID="htmltagsummary" runat="server" />
-        </div>
-        <div>
+            <p></p>
+            <asp:GridView ID="tagsummary" runat="server" />
             <p></p>
             <asp:Label ID="htmlcodelabel" runat="server" />
+            <p></p>
             <asp:Label ID="htmlsourcecode" runat="server" />
         </div>
     </form>

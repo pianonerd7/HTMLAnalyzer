@@ -8,9 +8,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Web;
 
-/// <summary>
-/// Summary description for HTMLAnalyzer
-/// </summary>
+
 public class HTMLAnalyzer
 {
     private string _url;
@@ -45,12 +43,10 @@ public class HTMLAnalyzer
         return sb.ToString();
     }
 
-    public Dictionary<string, int> CountTags(string url)
+    public Dictionary<string, int> CountTags()
     {
         Dictionary<string, int> numTags = new Dictionary<string, int>();
 
-        var html = new HtmlDocument();
-        html.LoadHtml(new WebClient().DownloadString(url));
         var root = html.DocumentNode;
         IEnumerable<HtmlNode> nodes = root.Descendants();
 
@@ -88,5 +84,4 @@ public class HTMLAnalyzer
 
         return sb.ToString();
     }
-  
 }

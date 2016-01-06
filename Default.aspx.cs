@@ -11,6 +11,8 @@ using System.Web.UI.WebControls;
 
 public partial class _Default : System.Web.UI.Page
 {
+    public List<string> htmlTags = new List<string>();
+
     protected void Page_Load(object sender, EventArgs e)
     {
     }
@@ -21,8 +23,15 @@ public partial class _Default : System.Web.UI.Page
         summarylabel.Text = "HTML Tag Summary";
         htmlcodelabel.Text = "HTML Source Code";
 
+        htmlTags.Add("list1");
+        htmlTags.Add("list2");
+
+
         HTMLAnalyzer analyzer = new HTMLAnalyzer(url);
-        htmltagsummary.Text = analyzer.DictionaryToString(analyzer.CountTags(url));
+
+        tagsummary.DataSource = analyzer.CountTags();
+        tagsummary.DataBind();
+
         htmlsourcecode.Text = Server.HtmlEncode(analyzer.getHtml());
     }
 }
