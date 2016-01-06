@@ -35,7 +35,6 @@ public partial class _Default : System.Web.UI.Page
             _html = Server.HtmlEncode(analyzer.getHtml());
             htmlsourcecode.Text = _html;
         }
-        //TODO add try catch for invalid url
     }
 
     protected void tagsummary_rowCommand(object sender, EventArgs e)

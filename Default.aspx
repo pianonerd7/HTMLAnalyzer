@@ -42,8 +42,9 @@
                 </Columns>
             </asp:GridView>
             <hr />
-            <asp:TextBox ID="searchText" runat="server"></asp:TextBox>
             <asp:Label ID="htmlcodelabel" runat="server" />
+            <p></p>
+            <asp:TextBox ID="searchText" runat="server" />
             <p></p>
             <asp:Literal ID="htmlsourcecode" runat="server" />
         </div>
