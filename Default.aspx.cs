@@ -36,8 +36,10 @@ public partial class _Default : System.Web.UI.Page
         htmlsourcecode.Text = Server.HtmlEncode(analyzer.getHtml());
     }
 
-    protected void OnSelectedIndexChanged(object sender, EventArgs e)
+    protected void tagsummary_rowCommand(object sender, EventArgs e)
     {
-        htmlsourcecode.Text = "testing";
+        GridViewRow row = (GridViewRow)((Button)sender).NamingContainer;
+        string tag = row.Cells[1].Text;
+
     }
 }

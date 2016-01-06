@@ -15,13 +15,13 @@
         </div>
         <div>
             <p></p>
-            <asp:Label ID="summarylabel" runat="server" />
+            <asp:Label ID="summarylabel" runat="server"  />
             <p></p>
             <asp:GridView ID="tagsummary" runat="server">
                 <Columns>
                     <asp:TemplateField ShowHeader="False">
                         <ItemTemplate>
-                            <asp:Button runat="server" Text="Highlight All Tags" OnClick="OnSelectedIndexChanged"/>
+                            <asp:Button runat="server" Text="Highlight All Tags" OnClick="tagsummary_rowCommand"/>
                         </ItemTemplate>
                     </asp:TemplateField>
                 </Columns>
